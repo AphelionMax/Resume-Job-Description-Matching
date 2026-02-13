@@ -1,10 +1,2 @@
-# Requirements for running similarity/resume matching WITHOUT scraping.
-# (Intentionally excludes Selenium/BeautifulSoup used by glassdoor.py and getjd.py.)
-
 pandas
-numpy
 scikit-learn
-matplotlib
-gensim
-nltk
-pdfminer.six

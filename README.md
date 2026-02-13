@@ -37,37 +37,25 @@ python step3_model_buidling.py
 ```
 
 
-## No-scraping mode
-If you already have `data.csv`, you can skip `glassdoor.py` and `getjd.py` entirely.
 
-### 1) Install non-scraping dependencies
+## No-scraping mode
+Use this mode when you already have job descriptions in `data.csv` and want matching only (no Selenium scraping).
+
+### 1) Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2) Prepare inputs
-- Ensure `data.csv` exists in the repo root.
-- Ensure your resume text exists as `resumeconverted.txt`.
-  - You can generate it from PDF with:
-    ```bash
-    python step2_getresume.py
-    ```
-  - Or create/edit `resumeconverted.txt` manually.
+### 2) Prepare resume text
+Create a plain-text resume file at `private/resume.txt` (or pass any path with `--resume`).
 
-### 3) Run similarity
+### 3) Run matcher
 ```bash
-python Doc_Similarity.py
-# or
-python step3_model_buidling.py
+python match_no_scrape.py --resume private/resume.txt --data data.csv
 ```
 
-### Expected `data.csv` columns
-For similarity scripts, include at least these columns:
-- `company`
-- `position`
-- `Job Description`
+This writes `ranked_matches.csv` and prints the top 5 matches to stdout.
 
-If you create `data.csv` manually, keep those exact column names.
 
 ## How to run tests
 I could not find an automated test suite (no test files, test runner config, or CI config in this repository).
